@@ -1,27 +1,23 @@
-function hasil = deret_taylor_sin3x(x,xo,tol)
+function deret_taylor_sin3x(x,xo,tol)
     y=0;i=0;
     h=x-xo;
     g=1;
-    //trigonometri
     t=0;i=0;
-   while (g>tol)|| i<15
+    mprintf("Suku ke\t Nilai Hampiran f(x)\tGalat eksak |f(x)-f_(x)|\n");
+    while (g>tol)
     y=y+fsin(xo,i,t)*h^i/factorial(i);
-    g=abs(y)-0.14112;
-    disp(g);
+    g=abs(0.14112-y);
+    mprintf('%d\t %f\t\t %f\n', i, y, g);
     i=i+1;
     t=t+1;
      if t==4 then
             t=0;
         end,  
    end
-   //g=fsin(xo,i,t)*h^i/factorial(i);
-   disp(i);
-    hasil = g;
-   
+  
 endfunction
 
 function nf=fsin(x,i,t)
-    //nf=3^i * sind(3*x+180*i/2)
     select t
     case 0 then 
         nf=3^i*sin(3*x);
