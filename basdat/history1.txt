@@ -1,0 +1,1138 @@
+MariaDB [(none)]> alter database tokobuku character set latin1;
+Query OK, 1 row affected (0.07 sec)
+
+MariaDB [(none)]> show create database tokobuku;
++----------+---------------------------------------------------------------------+
+| Database | Create Database                                                     |
++----------+---------------------------------------------------------------------+
+| tokobuku | CREATE DATABASE `tokobuku` /*!40100 DEFAULT CHARACTER SET latin1 */ |
++----------+---------------------------------------------------------------------+
+1 row in set (0.00 sec)
+
+MariaDB [(none)]> drop tokobuku;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'tokobuku' at line 1
+MariaDB [(none)]> drop database tokobuku;
+Query OK, 0 rows affected (1.02 sec)
+
+MariaDB [(none)]> show database;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'database' at line 1
+MariaDB [(none)]> show databases;
++----------------------+
+| Database             |
++----------------------+
+| challange_database   |
+| db10116331penginapan |
+| db_matdis            |
+| db_penginapan        |
+| db_perpustakaan      |
+| db_sabilast          |
+| db_sosialmedias      |
+| db_topp              |
+| db_unikom            |
+| db_wordpress         |
+| dbmahasiswa          |
+| information_schema   |
+| mahasiswa            |
+| mysql                |
+| performance_schema   |
+| phpmyadmin           |
+| pj_inventory         |
+| sabilast_wp106       |
+| sakila               |
+| test                 |
+| workshop_nodejs      |
+| ws_belanja           |
++----------------------+
+22 rows in set (0.00 sec)
+
+MariaDB [(none)]> create database TokuBuku;
+Query OK, 1 row affected (0.00 sec)
+
+MariaDB [(none)]> show databases;
++----------------------+
+| Database             |
++----------------------+
+| challange_database   |
+| db10116331penginapan |
+| db_matdis            |
+| db_penginapan        |
+| db_perpustakaan      |
+| db_sabilast          |
+| db_sosialmedias      |
+| db_topp              |
+| db_unikom            |
+| db_wordpress         |
+| dbmahasiswa          |
+| information_schema   |
+| mahasiswa            |
+| mysql                |
+| performance_schema   |
+| phpmyadmin           |
+| pj_inventory         |
+| sabilast_wp106       |
+| sakila               |
+| test                 |
+| tokubuku             |
+| workshop_nodejs      |
+| ws_belanja           |
++----------------------+
+23 rows in set (0.00 sec)
+
+MariaDB [(none)]> use tokobuku;
+ERROR 1049 (42000): Unknown database 'tokobuku'
+MariaDB [(none)]> use TokoBuku;
+ERROR 1049 (42000): Unknown database 'tokobuku'
+MariaDB [(none)]> show databases;
++----------------------+
+| Database             |
++----------------------+
+| challange_database   |
+| db10116331penginapan |
+| db_matdis            |
+| db_penginapan        |
+| db_perpustakaan      |
+| db_sabilast          |
+| db_sosialmedias      |
+| db_topp              |
+| db_unikom            |
+| db_wordpress         |
+| dbmahasiswa          |
+| information_schema   |
+| mahasiswa            |
+| mysql                |
+| performance_schema   |
+| phpmyadmin           |
+| pj_inventory         |
+| sabilast_wp106       |
+| sakila               |
+| test                 |
+| tokubuku             |
+| workshop_nodejs      |
+| ws_belanja           |
++----------------------+
+23 rows in set (0.00 sec)
+
+MariaDB [(none)]> use ws_belanja;
+Database changed
+MariaDB [ws_belanja]> use tokobuku;
+ERROR 1049 (42000): Unknown database 'tokobuku'
+MariaDB [ws_belanja]> drop tokubuku;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'tokubuku' at line 1
+MariaDB [ws_belanja]> drop database tokubuku;
+Query OK, 0 rows affected (0.00 sec)
+
+MariaDB [ws_belanja]> create database tokobuku;
+Query OK, 1 row affected (0.00 sec)
+
+MariaDB [ws_belanja]> use tokobuku;
+Database changed
+MariaDB [tokobuku]> create table testT;
+ERROR 1113 (42000): A table must have at least 1 column
+MariaDB [tokobuku]> create table testT(
+    -> id int(11) unsigned zerofill,
+    -> nama varchar(11)
+    -> );
+Query OK, 0 rows affected (0.31 sec)
+
+MariaDB [tokobuku]> desc table testT;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'table testT' at line 1
+MariaDB [tokobuku]> desc testT;
++-------+---------------------------+------+-----+---------+-------+
+| Field | Type                      | Null | Key | Default | Extra |
++-------+---------------------------+------+-----+---------+-------+
+| id    | int(11) unsigned zerofill | YES  |     | NULL    |       |
+| nama  | varchar(11)               | YES  |     | NULL    |       |
++-------+---------------------------+------+-----+---------+-------+
+2 rows in set (0.09 sec)
+
+MariaDB [tokobuku]> alter table testT MODIFY id smallint(11);
+Query OK, 0 rows affected (1.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [tokobuku]> desc testT;
++-------+--------------+------+-----+---------+-------+
+| Field | Type         | Null | Key | Default | Extra |
++-------+--------------+------+-----+---------+-------+
+| id    | smallint(11) | YES  |     | NULL    |       |
+| nama  | varchar(11)  | YES  |     | NULL    |       |
++-------+--------------+------+-----+---------+-------+
+2 rows in set (0.01 sec)
+
+MariaDB [tokobuku]> alter table CHANGE id id_testT smallint(11);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'CHANGE id id_testT smallint(11)' at line 1
+MariaDB [tokobuku]> alter table testT CHANGE id id_testT smallint(11);
+Query OK, 0 rows affected (0.09 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [tokobuku]> desc testT;
++----------+--------------+------+-----+---------+-------+
+| Field    | Type         | Null | Key | Default | Extra |
++----------+--------------+------+-----+---------+-------+
+| id_testT | smallint(11) | YES  |     | NULL    |       |
+| nama     | varchar(11)  | YES  |     | NULL    |       |
++----------+--------------+------+-----+---------+-------+
+2 rows in set (0.01 sec)
+
+MariaDB [tokobuku]> rename table testT to test
+    -> ;
+Query OK, 0 rows affected (0.28 sec)
+
+MariaDB [tokobuku]> show tables;
++--------------------+
+| Tables_in_tokobuku |
++--------------------+
+| test               |
++--------------------+
+1 row in set (0.00 sec)
+
+MariaDB [tokobuku]> alter table test CHANGE id_testT id_test smallint(11)
+    -> ;
+Query OK, 0 rows affected (0.10 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [tokobuku]> desc testT;
+ERROR 1146 (42S02): Table 'tokobuku.testt' doesn't exist
+MariaDB [tokobuku]> desc test;
++---------+--------------+------+-----+---------+-------+
+| Field   | Type         | Null | Key | Default | Extra |
++---------+--------------+------+-----+---------+-------+
+| id_test | smallint(11) | YES  |     | NULL    |       |
+| nama    | varchar(11)  | YES  |     | NULL    |       |
++---------+--------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+MariaDB [tokobuku]> drop table test drop nama;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'drop nama' at line 1
+MariaDB [tokobuku]> alter table test drop nama;
+Query OK, 0 rows affected (0.39 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [tokobuku]> desc test;
++---------+--------------+------+-----+---------+-------+
+| Field   | Type         | Null | Key | Default | Extra |
++---------+--------------+------+-----+---------+-------+
+| id_test | smallint(11) | YES  |     | NULL    |       |
++---------+--------------+------+-----+---------+-------+
+1 row in set (0.01 sec)
+
+MariaDB [tokobuku]> create table katalog(
+    -> IDProduk SMALLINT unsigned zerofill,
+    -> Jumlah INT UNSIGNED,
+    -> Harga Decimal(7,2),
+    -> Berat Float(8,4)
+    -> );
+Query OK, 0 rows affected (0.20 sec)
+
+MariaDB [tokobuku]> 
+MariaDB [tokobuku]> desc katalog;
++----------+-------------------------------+------+-----+---------+-------+
+| Field    | Type                          | Null | Key | Default | Extra |
++----------+-------------------------------+------+-----+---------+-------+
+| IDProduk | smallint(5) unsigned zerofill | YES  |     | NULL    |       |
+| Jumlah   | int(10) unsigned              | YES  |     | NULL    |       |
+| Harga    | decimal(7,2)                  | YES  |     | NULL    |       |
+| Berat    | float(8,4)                    | YES  |     | NULL    |       |
++----------+-------------------------------+------+-----+---------+-------+
+4 rows in set (0.02 sec)
+
+MariaDB [tokobuku]> insert into katalog values(1,2,7500.2,1.5);
+Query OK, 1 row affected (0.12 sec)
+
+MariaDB [tokobuku]> select * from katalog;
++----------+--------+---------+--------+
+| IDProduk | Jumlah | Harga   | Berat  |
++----------+--------+---------+--------+
+|    00001 |      2 | 7500.20 | 1.5000 |
++----------+--------+---------+--------+
+1 row in set (0.00 sec)
+
+MariaDB [tokobuku]> create table pembelian(
+    -> IDPembelian smallint unsigned,
+    -> ModelSepeda varchar(40),
+    -> WarnaSpeeda enum('merah','biru','hijau','kuning'),
+    -> OpsiSepeda set('rak','senter','helm','gembok')
+    -> );
+Query OK, 0 rows affected (0.23 sec)
+
+MariaDB [tokobuku]> desc katalog;
++----------+-------------------------------+------+-----+---------+-------+
+| Field    | Type                          | Null | Key | Default | Extra |
++----------+-------------------------------+------+-----+---------+-------+
+| IDProduk | smallint(5) unsigned zerofill | YES  |     | NULL    |       |
+| Jumlah   | int(10) unsigned              | YES  |     | NULL    |       |
+| Harga    | decimal(7,2)                  | YES  |     | NULL    |       |
+| Berat    | float(8,4)                    | YES  |     | NULL    |       |
++----------+-------------------------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+MariaDB [tokobuku]> desc pembelian;
++-------------+---------------------------------------+------+-----+---------+-------+
+| Field       | Type                                  | Null | Key | Default | Extra |
++-------------+---------------------------------------+------+-----+---------+-------+
+| IDPembelian | smallint(5) unsigned                  | YES  |     | NULL    |       |
+| ModelSepeda | varchar(40)                           | YES  |     | NULL    |       |
+| WarnaSpeeda | enum('merah','biru','hijau','kuning') | YES  |     | NULL    |       |
+| OpsiSepeda  | set('rak','senter','helm','gembok')   | YES  |     | NULL    |       |
++-------------+---------------------------------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+MariaDB [tokobuku]> show tables;
++--------------------+
+| Tables_in_tokobuku |
++--------------------+
+| katalog            |
+| pembelian          |
+| test               |
++--------------------+
+3 rows in set (0.00 sec)
+
+MariaDB [tokobuku]> desc pembelian;
++-------------+---------------------------------------+------+-----+---------+-------+
+| Field       | Type                                  | Null | Key | Default | Extra |
++-------------+---------------------------------------+------+-----+---------+-------+
+| IDPembelian | smallint(5) unsigned                  | YES  |     | NULL    |       |
+| ModelSepeda | varchar(40)                           | YES  |     | NULL    |       |
+| WarnaSpeeda | enum('merah','biru','hijau','kuning') | YES  |     | NULL    |       |
+| OpsiSepeda  | set('rak','senter','helm','gembok')   | YES  |     | NULL    |       |
++-------------+---------------------------------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+MariaDB [tokobuku]> create table PembelianBuku(
+    -> IDPembelian smalllint unsigned,
+    -> IDBuku smallint unsigned,
+    -> Copyright YEAR,
+    -> TanggalBeli timestamp
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'smalllint unsigned,
+IDBuku smallint unsigned,
+Copyright YEAR,
+TanggalBeli timest' at line 2
+MariaDB [tokobuku]> create table PembelianBuku(
+    -> IDPembelian smallint unsigned,
+    -> IDBuku smallint unsigned,
+    -> Copyright YEAR,
+    -> TanggalBeli timestamp
+    -> );
+Query OK, 0 rows affected (0.21 sec)
+
+MariaDB [tokobuku]> desc PembelianBuku;
++-------------+----------------------+------+-----+-------------------+-----------------------------+
+| Field       | Type                 | Null | Key | Default           | Extra                       |
++-------------+----------------------+------+-----+-------------------+-----------------------------+
+| IDPembelian | smallint(5) unsigned | YES  |     | NULL              |                             |
+| IDBuku      | smallint(5) unsigned | YES  |     | NULL              |                             |
+| Copyright   | year(4)              | YES  |     | NULL              |                             |
+| TanggalBeli | timestamp            | NO   |     | CURRENT_TIMESTAMP | on update CURRENT_TIMESTAMP |
++-------------+----------------------+------+-----+-------------------+-----------------------------+
+4 rows in set (0.01 sec)
+
+MariaDB [tokobuku]> insert into PembelianBuku values(1,1,'2017',current_timestamp);
+Query OK, 1 row affected (0.10 sec)
+
+MariaDB [tokobuku]> select * from PembelianBuku;
++-------------+--------+-----------+---------------------+
+| IDPembelian | IDBuku | Copyright | TanggalBeli         |
++-------------+--------+-----------+---------------------+
+|           1 |      1 |      2017 | 2018-03-17 12:31:40 |
++-------------+--------+-----------+---------------------+
+1 row in set (0.00 sec)
+
+MariaDB [tokobuku]> create table inventori(
+    -> IDProduk smallint unsigned zerofill,
+    -> Nama varchar(40),
+    -> Foto blob,
+    -> Jumlah int unsigned
+    -> );
+Query OK, 0 rows affected (0.29 sec)
+
+MariaDB [tokobuku]> desc inventori;
++----------+-------------------------------+------+-----+---------+-------+
+| Field    | Type                          | Null | Key | Default | Extra |
++----------+-------------------------------+------+-----+---------+-------+
+| IDProduk | smallint(5) unsigned zerofill | YES  |     | NULL    |       |
+| Nama     | varchar(40)                   | YES  |     | NULL    |       |
+| Foto     | blob                          | YES  |     | NULL    |       |
+| Jumlah   | int(10) unsigned              | YES  |     | NULL    |       |
++----------+-------------------------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+MariaDB [tokobuku]> desc katalog;
++----------+-------------------------------+------+-----+---------+-------+
+| Field    | Type                          | Null | Key | Default | Extra |
++----------+-------------------------------+------+-----+---------+-------+
+| IDProduk | smallint(5) unsigned zerofill | YES  |     | NULL    |       |
+| Jumlah   | int(10) unsigned              | YES  |     | NULL    |       |
+| Harga    | decimal(7,2)                  | YES  |     | NULL    |       |
+| Berat    | float(8,4)                    | YES  |     | NULL    |       |
++----------+-------------------------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+MariaDB [tokobuku]> alter table katalog add DokumenDeskripsi 
+    -> Text character set Latin1 collate latin1;
+ERROR 1273 (HY000): Unknown collation: 'latin1'
+MariaDB [tokobuku]> Text character set Latin1 collate Latin1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Text character set Latin1 collate Latin1' at line 1
+MariaDB [tokobuku]> alter table katalog add DokumenDeskripsi 
+    -> Text ;
+Query OK, 0 rows affected (0.39 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [tokobuku]> alter table katalog drop dokumendeskripsi;
+Query OK, 0 rows affected (0.48 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [tokobuku]> show collate;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'collate' at line 1
+MariaDB [tokobuku]> alter table katalog add DokumenDeskripsi 
+    -> Text character set Latin1 collate latin1;
+ERROR 1273 (HY000): Unknown collation: 'latin1'
+MariaDB [tokobuku]> Text character set Latin1 collate Latin1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Text character set Latin1 collate Latin1' at line 1
+MariaDB [tokobuku]> alter table katalog add DokumenDeskripsi 
+    -> Text character set Latin1 collate Latin1_bin;
+Query OK, 0 rows affected (0.44 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [tokobuku]> desc katalog;
++------------------+-------------------------------+------+-----+---------+-------+
+| Field            | Type                          | Null | Key | Default | Extra |
++------------------+-------------------------------+------+-----+---------+-------+
+| IDProduk         | smallint(5) unsigned zerofill | YES  |     | NULL    |       |
+| Jumlah           | int(10) unsigned              | YES  |     | NULL    |       |
+| Harga            | decimal(7,2)                  | YES  |     | NULL    |       |
+| Berat            | float(8,4)                    | YES  |     | NULL    |       |
+| DokumenDeskripsi | text                          | YES  |     | NULL    |       |
++------------------+-------------------------------+------+-----+---------+-------+
+5 rows in set (0.01 sec)
+
+MariaDB [tokobuku]> show create katalog;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'katalog' at line 1
+MariaDB [tokobuku]> show create table katalog;
++---------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Table   | Create Table                                                                                                                                                                                                                                                                                                 |
++---------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| katalog | CREATE TABLE `katalog` (
+  `IDProduk` smallint(5) unsigned zerofill DEFAULT NULL,
+  `Jumlah` int(10) unsigned DEFAULT NULL,
+  `Harga` decimal(7,2) DEFAULT NULL,
+  `Berat` float(8,4) DEFAULT NULL,
+  `DokumenDeskripsi` text CHARACTER SET latin1 COLLATE latin1_bin
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 |
++---------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+1 row in set (0.05 sec)
+
+MariaDB [tokobuku]> show tables;
++--------------------+
+| Tables_in_tokobuku |
++--------------------+
+| inventori          |
+| katalog            |
+| pembelian          |
+| pembelianbuku      |
+| test               |
++--------------------+
+5 rows in set (0.00 sec)
+
+MariaDB [tokobuku]> create table inventori(
+    -> IDProduk smallint unsigned zerofill,
+    -> Nama varchar(40),
+    -> Foto blob,
+    -> Jumlah int unsigned
+    -> );
+ERROR 1050 (42S01): Table 'inventori' already exists
+MariaDB [tokobuku]> desc inventori;
++----------+-------------------------------+------+-----+---------+-------+
+| Field    | Type                          | Null | Key | Default | Extra |
++----------+-------------------------------+------+-----+---------+-------+
+| IDProduk | smallint(5) unsigned zerofill | YES  |     | NULL    |       |
+| Nama     | varchar(40)                   | YES  |     | NULL    |       |
+| Foto     | blob                          | YES  |     | NULL    |       |
+| Jumlah   | int(10) unsigned              | YES  |     | NULL    |       |
++----------+-------------------------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+MariaDB [tokobuku]> create table biografi(
+    -> IDPembelian smallint unsigned not null,
+    -> TahunLahir smallint unsigned,
+    -> 
+    -> KotaKelahiran varchar(40) not null default 'kosong'
+    -> );
+Query OK, 0 rows affected (0.31 sec)
+
+MariaDB [tokobuku]> desc biografi;
++---------------+----------------------+------+-----+---------+-------+
+| Field         | Type                 | Null | Key | Default | Extra |
++---------------+----------------------+------+-----+---------+-------+
+| IDPembelian   | smallint(5) unsigned | NO   |     | NULL    |       |
+| TahunLahir    | smallint(5) unsigned | YES  |     | NULL    |       |
+| KotaKelahiran | varchar(40)          | NO   |     | kosong  |       |
++---------------+----------------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+MariaDB [tokobuku]> insert into biografi (IDPembelian,TahunLahir);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+MariaDB [tokobuku]> insert into biografi (IDPembelian,TahunLahir) values(1,2017);
+Query OK, 1 row affected (0.08 sec)
+
+MariaDB [tokobuku]> select * from biogragi;
+ERROR 1146 (42S02): Table 'tokobuku.biogragi' doesn't exist
+MariaDB [tokobuku]> select * from biografi;
++-------------+------------+---------------+
+| IDPembelian | TahunLahir | KotaKelahiran |
++-------------+------------+---------------+
+|           1 |       2017 | kosong        |
++-------------+------------+---------------+
+1 row in set (0.00 sec)
+
+MariaDB [tokobuku]> desc pembelian;
++-------------+---------------------------------------+------+-----+---------+-------+
+| Field       | Type                                  | Null | Key | Default | Extra |
++-------------+---------------------------------------+------+-----+---------+-------+
+| IDPembelian | smallint(5) unsigned                  | YES  |     | NULL    |       |
+| ModelSepeda | varchar(40)                           | YES  |     | NULL    |       |
+| WarnaSpeeda | enum('merah','biru','hijau','kuning') | YES  |     | NULL    |       |
+| OpsiSepeda  | set('rak','senter','helm','gembok')   | YES  |     | NULL    |       |
++-------------+---------------------------------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+MariaDB [tokobuku]> create database basdatl1;
+Query OK, 1 row affected (0.00 sec)
+
+MariaDB [tokobuku]> use basdatl1;
+Database changed
+MariaDB [basdatl1]> show tables;
+Empty set (0.00 sec)
+
+MariaDB [basdatl1]> create table pembelian(
+    -> IDPembelian smallint unsigned not null primary key,
+    -> IDMdel smallint unsigned not null,
+    -> DeskripsiModel varchar(40)
+    -> );
+Query OK, 0 rows affected (0.24 sec)
+
+MariaDB [basdatl1]> desc pembelian;
++----------------+----------------------+------+-----+---------+-------+
+| Field          | Type                 | Null | Key | Default | Extra |
++----------------+----------------------+------+-----+---------+-------+
+| IDPembelian    | smallint(5) unsigned | NO   | PRI | NULL    |       |
+| IDMdel         | smallint(5) unsigned | NO   |     | NULL    |       |
+| DeskripsiModel | varchar(40)          | YES  |     | NULL    |       |
++----------------+----------------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+MariaDB [basdatl1]> drop table pembelian;
+Query OK, 0 rows affected (0.24 sec)
+
+MariaDB [basdatl1]> create table pembelian(
+    -> IDPembelian smallint unsigned not null,
+    -> IDModel smallint unsigned not null,
+    -> DeskripsiModel varchar(40),
+    -> Primary Key(IDPembelian)
+    -> );
+Query OK, 0 rows affected (0.29 sec)
+
+MariaDB [basdatl1]> desc pembelian;
++----------------+----------------------+------+-----+---------+-------+
+| Field          | Type                 | Null | Key | Default | Extra |
++----------------+----------------------+------+-----+---------+-------+
+| IDPembelian    | smallint(5) unsigned | NO   | PRI | NULL    |       |
+| IDModel        | smallint(5) unsigned | NO   |     | NULL    |       |
+| DeskripsiModel | varchar(40)          | YES  |     | NULL    |       |
++----------------+----------------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+MariaDB [basdatl1]> drop table pembelian;
+Query OK, 0 rows affected (0.22 sec)
+
+MariaDB [basdatl1]> create table pembelian(
+    -> IDPembelian smallint unsigned not null,
+    -> IDModel smallint unsigned not null,
+    -> DeskripsiModel varchar(40),
+    -> Primary Key(IDPembelian,IDModel);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 5
+MariaDB [basdatl1]> create table pembelian(
+    -> IDPembelian smallint unsigned not null,
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 2
+MariaDB [basdatl1]> create table pembelian(
+    -> IDPembelian smallint unsigned not null,
+    -> IDModel smallint unsigned not null,
+    -> DeskripsiModel varchar(40),
+    -> Primary Key(IDPembelian,IDModel)
+    -> );
+Query OK, 0 rows affected (0.26 sec)
+
+MariaDB [basdatl1]> desc pembelian;
++----------------+----------------------+------+-----+---------+-------+
+| Field          | Type                 | Null | Key | Default | Extra |
++----------------+----------------------+------+-----+---------+-------+
+| IDPembelian    | smallint(5) unsigned | NO   | PRI | NULL    |       |
+| IDModel        | smallint(5) unsigned | NO   | PRI | NULL    |       |
+| DeskripsiModel | varchar(40)          | YES  |     | NULL    |       |
++----------------+----------------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+MariaDB [basdatl1]> insert into pembelian values (1,1,'Mobil');
+Query OK, 1 row affected (0.06 sec)
+
+MariaDB [basdatl1]> insert into pembelian values (1,2,'Motor');
+Query OK, 1 row affected (0.10 sec)
+
+MariaDB [basdatl1]> insert into pembelian values (1,3,'Motor');
+Query OK, 1 row affected (0.06 sec)
+
+MariaDB [basdatl1]> select * from pembelian;
++-------------+---------+----------------+
+| IDPembelian | IDModel | DeskripsiModel |
++-------------+---------+----------------+
+|           1 |       1 | Mobil          |
+|           1 |       2 | Motor          |
+|           1 |       3 | Motor          |
++-------------+---------+----------------+
+3 rows in set (0.00 sec)
+
+MariaDB [basdatl1]> drop table pembelian;
+Query OK, 0 rows affected (0.22 sec)
+
+MariaDB [basdatl1]> create table pembelian(
+    -> IDPembelian smallint unsigned not null,
+    -> IDModel smallint unsigned not null,
+    -> DeskripsiModel varchar(40),
+    -> Primary Key(IDPembelian),
+    -> unique key (IDModel)
+    -> );
+Query OK, 0 rows affected (0.23 sec)
+
+MariaDB [basdatl1]> desc pembelian;
++----------------+----------------------+------+-----+---------+-------+
+| Field          | Type                 | Null | Key | Default | Extra |
++----------------+----------------------+------+-----+---------+-------+
+| IDPembelian    | smallint(5) unsigned | NO   | PRI | NULL    |       |
+| IDModel        | smallint(5) unsigned | NO   | UNI | NULL    |       |
+| DeskripsiModel | varchar(40)          | YES  |     | NULL    |       |
++----------------+----------------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+MariaDB [basdatl1]> create table katalog(
+    -> IDProduk smallint unsigned not null auto_increment,
+    -> Nama varchar(40) not null,
+    -> primary key (IDProduk)
+    -> );
+Query OK, 0 rows affected (0.19 sec)
+
+MariaDB [basdatl1]> insert into katalog (nama) values ('Buku');
+Query OK, 1 row affected (0.08 sec)
+
+MariaDB [basdatl1]> insert into katalog (nama) values ('Mobil');
+Query OK, 1 row affected (0.07 sec)
+
+MariaDB [basdatl1]> insert into katalog (nama) values ('Motor');
+Query OK, 1 row affected (0.07 sec)
+
+MariaDB [basdatl1]> select * from katalog;
++----------+-------+
+| IDProduk | Nama  |
++----------+-------+
+|        1 | Buku  |
+|        2 | Mobil |
+|        3 | Motor |
++----------+-------+
+3 rows in set (0.00 sec)
+
+MariaDB [basdatl1]> Create table model(
+    -> IDModel smallint unsigned not null,
+    -> Nama_model varchar(15) not null,
+    -> Jenis_model varchar(15) not null,
+    -> Primary key(IDModel)
+    -> );
+Query OK, 0 rows affected (0.22 sec)
+
+MariaDB [basdatl1]> desc model;
++-------------+----------------------+------+-----+---------+-------+
+| Field       | Type                 | Null | Key | Default | Extra |
++-------------+----------------------+------+-----+---------+-------+
+| IDModel     | smallint(5) unsigned | NO   | PRI | NULL    |       |
+| Nama_model  | varchar(15)          | NO   |     | NULL    |       |
+| Jenis_model | varchar(15)          | NO   |     | NULL    |       |
++-------------+----------------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+MariaDB [basdatl1]> create table pembelian( 
+    -> IDPembelian smallint unsigned not null,
+    -> IDModel smallint unsigned not null,
+    -> DeskripsiModel varchar(40),
+    -> primary key(IDPembelian),
+    -> Foreign key
+    -> (IDModel) references model(IDModel)
+    -> ON DELETE Restrict On Update restrict
+    -> );
+ERROR 1050 (42S01): Table 'pembelian' already exists
+MariaDB [basdatl1]> drop table pembelian;
+Query OK, 0 rows affected (0.20 sec)
+
+MariaDB [basdatl1]> create table pembelian( 
+    -> IDPembelian smallint unsigned not null,
+    -> IDModel smallint unsigned not null,
+    -> DeskripsiModel varchar(40),
+    -> primary key(IDPembelian),
+    -> Foreign key(IDModel)
+    -> References model(IDModel)
+    -> On update restrict
+    -> on delete restrict
+    -> );
+Query OK, 0 rows affected (0.25 sec)
+
+MariaDB [basdatl1]> show databases;
++----------------------+
+| Database             |
++----------------------+
+| basdatl1             |
+| challange_database   |
+| db10116331penginapan |
+| db_matdis            |
+| db_penginapan        |
+| db_perpustakaan      |
+| db_sabilast          |
+| db_sosialmedias      |
+| db_topp              |
+| db_unikom            |
+| db_wordpress         |
+| dbmahasiswa          |
+| information_schema   |
+| mahasiswa            |
+| mysql                |
+| performance_schema   |
+| phpmyadmin           |
+| pj_inventory         |
+| sabilast_wp106       |
+| sakila               |
+| test                 |
+| tokobuku             |
+| workshop_nodejs      |
+| ws_belanja           |
++----------------------+
+24 rows in set (0.00 sec)
+
+MariaDB [basdatl1]> create database tugas_bd_1
+    -> ;
+Query OK, 1 row affected (0.00 sec)
+
+MariaDB [basdatl1]> use tugas_bd_1;
+Database changed
+MariaDB [tugas_bd_1]> create table Mahasiswa(
+    -> nim int not null,
+    -> nama varchar(15) not null,
+    -> alamat varchar(30) not null,
+    -> tgl_lahir date
+    -> primary_key(nim)
+    -> )engine=innoDB;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '(nim)
+)engine=innoDB' at line 6
+MariaDB [tugas_bd_1]> create table Mahasiswa(
+    -> nim int not null,
+    -> nama varchar(15) not null,
+    -> alamat varchar(30) not null,
+    -> tgl_lahir date
+    -> primary_key(nim)
+    -> )engine=InnoDB;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '(nim)
+)engine=InnoDB' at line 6
+MariaDB [tugas_bd_1]> create table Mahasiswa(
+    -> nim int not null,
+    -> nama varchar(15) not null,
+    -> alamat varchar(30) not null,
+    -> tgl_lahir date
+    -> primary_key(nim)
+    -> )ENGINE=InnoDB;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '(nim)
+)ENGINE=InnoDB' at line 6
+MariaDB [tugas_bd_1]> CREATE TABLE Mahasiswa (
+    -> Nim INT NOT NULL,
+    -> Nama VARCHAR(15) NOT NULL,
+    -> Alamat VARCHAR(30) NOT NULL,
+    -> Tgl_lahir DATE
+    -> PRIMARY KEY (Nim)
+    -> )ENGINE=InnoDB;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '(Nim)
+)ENGINE=InnoDB' at line 6
+MariaDB [tugas_bd_1]> CREATE TABLE Mahasiswa (
+    -> Nim INT NOT NULL,
+    -> Nama VARCHAR(15) NOT NULL,
+    -> Alamat VARCHAR(30) NOT NULL,
+    -> Tgl_lahir DATE
+    -> PRIMARY KEY (Nim)
+    -> )ENGINE=InnoDB;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '(Nim)
+)ENGINE=InnoDB' at line 6
+MariaDB [tugas_bd_1]> CREATE TABLE Mahasiswa (
+    -> Nim INT(11) NOT NULL,
+    -> Nama VARCHAR(15) NOT NULL,
+    -> Alamat VARCHAR(30) NOT NULL,
+    -> Tgl_lahir DATE
+    -> PRIMARY KEY (Nim)
+    -> )ENGINE=InnoDB;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '(Nim)
+)ENGINE=InnoDB' at line 6
+MariaDB [tugas_bd_1]> CREATE TABLE Mahasiswa (
+    -> Nim INT(11) NOT NULL,
+    -> Nama VARCHAR(15) NOT NULL,
+    -> Alamat VARCHAR(30) NOT NULL,
+    -> Tgl_lahir DATE
+    -> PRIMARY KEY (Nim)
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '(Nim)
+)' at line 6
+MariaDB [tugas_bd_1]> create table mahasiswa(
+    -> nim int(11) not null
+    -> );
+Query OK, 0 rows affected (0.30 sec)
+
+MariaDB [tugas_bd_1]> drop table mahasiswa;
+Query OK, 0 rows affected (0.20 sec)
+
+MariaDB [tugas_bd_1]> CREATE TABLE Mahasiswa(
+    -> Nim INT(11) NOT NULL,
+    -> Nama VARCHAR(15) NOT NULL,
+    -> Alamat VARCHAR(30) NOT NULL,
+    -> Tgl_lahir DATE
+    -> PRIMARY KEY (Nim)
+    -> )ENGINE=InnoDB;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '(Nim)
+)ENGINE=InnoDB' at line 6
+MariaDB [tugas_bd_1]> CREATE TABLE Mahasiswa(
+    -> Nim INT(11) NOT NULL,
+    -> Nama VARCHAR(15) NOT NULL,
+    -> Alamat VARCHAR(30) NOT NULL,
+    -> Tgl_lahir DATE
+    -> PRIMARY KEY (Nim);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '(Nim)' at line 6
+MariaDB [tugas_bd_1]> CREATE TABLE Mahasiswa(
+    -> Nim INT(11) NOT NULL,
+    -> Nama VARCHAR(15) NOT NULL,
+    -> Alamat VARCHAR(30) NOT NULL,
+    -> Tgl_lahir DATE,
+    -> PRIMARY KEY(Nim)
+    -> )ENGINE=InnoDB;
+Query OK, 0 rows affected (0.24 sec)
+
+MariaDB [tugas_bd_1]> desc mahasiswa;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| Nim       | int(11)     | NO   | PRI | NULL    |       |
+| Nama      | varchar(15) | NO   |     | NULL    |       |
+| Alamat    | varchar(30) | NO   |     | NULL    |       |
+| Tgl_lahir | date        | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+4 rows in set (0.07 sec)
+
+MariaDB [tugas_bd_1]> CREATE TABLE Orang_Tua(
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+MariaDB [tugas_bd_1]> drop table mahasiswa;
+Query OK, 0 rows affected (0.24 sec)
+
+MariaDB [tugas_bd_1]> create table mahasiswa(
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+MariaDB [tugas_bd_1]> CREATE TABLE Mahasiswa(
+    -> Nim int NOT NULL,
+    -> Nama varchar(15) not null,
+    -> Alamat varchar(30) not null,
+    -> Tgl_lahir Date
+    -> Primary key(Nim)
+    -> )engine=innoDB;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '(Nim)
+)engine=innoDB' at line 6
+MariaDB [tugas_bd_1]> CREATE TABLE Mahasiswa(
+    -> Nim int NOT NULL,
+    -> Nama varchar(15) not null,
+    -> Alamat varchar(30) not null,
+    -> Tgl_lahir Date,
+    -> Primary key(Nim)
+    -> )engine=innoDB;
+Query OK, 0 rows affected (0.22 sec)
+
+MariaDB [tugas_bd_1]> desc mahasiswa;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| Nim       | int(11)     | NO   | PRI | NULL    |       |
+| Nama      | varchar(15) | NO   |     | NULL    |       |
+| Alamat    | varchar(30) | NO   |     | NULL    |       |
+| Tgl_lahir | date        | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+MariaDB [tugas_bd_1]> create table Orang_Tua(
+    -> Nim int not null,
+    -> Nama_Ortu varchar(15),
+    -> Alamat_Ortu varchar(30),
+    -> asd;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 5
+MariaDB [tugas_bd_1]> create table Orang_Tua(
+    -> ID_Ortu int not null,
+    -> Nim int not null,
+    -> Nama_Ortu varchar(15),
+    -> Alamat_Ortu varchar(30),
+    -> Primary key(ID_Ortu),
+    -> Foreign key(Nim)
+    -> References Mahasiswa(Nim)
+    -> ON UPDATE restrict
+    -> ON DELETE restrict
+    -> );
+Query OK, 0 rows affected (0.23 sec)
+
+MariaDB [tugas_bd_1]> desc orang_tua;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| ID_Ortu     | int(11)     | NO   | PRI | NULL    |       |
+| Nim         | int(11)     | NO   | MUL | NULL    |       |
+| Nama_Ortu   | varchar(15) | YES  |     | NULL    |       |
+| Alamat_Ortu | varchar(30) | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+MariaDB [tugas_bd_1]> show create table orang_tua;
++-----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Table     | Create Table                                                                                                                                                                                                                                                                                                                                   |
++-----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| orang_tua | CREATE TABLE `orang_tua` (
+  `ID_Ortu` int(11) NOT NULL,
+  `Nim` int(11) NOT NULL,
+  `Nama_Ortu` varchar(15) DEFAULT NULL,
+  `Alamat_Ortu` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`ID_Ortu`),
+  KEY `Nim` (`Nim`),
+  CONSTRAINT `orang_tua_ibfk_1` FOREIGN KEY (`Nim`) REFERENCES `mahasiswa` (`Nim`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 |
++-----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+1 row in set (0.00 sec)
+
+MariaDB [tugas_bd_1]> MariaDB [(none)]> show databases;
++----------------------+
+| Database             |
++----------------------+
+| basdatl1             |
+| challange_database   |
+| db10116331penginapan |
+| db_matdis            |
+| db_penginapan        |
+| db_perpustakaan      |
+| db_sabilast          |
+| db_sosialmedias      |
+| db_topp              |
+| db_unikom            |
+| db_wordpress         |
+| dbmahasiswa          |
+| information_schema   |
+| mahasiswa            |
+| mysql                |
+| performance_schema   |
+| phpmyadmin           |
+| pj_inventory         |
+| sabilast_wp106       |
+| sakila               |
+| test                 |
+| tokobuku             |
+| tugas_bd_1           |
+| workshop_nodejs      |
+| ws_belanja           |
++----------------------+
+25 rows in set (0.00 sec)
+
+MariaDB [(none)]> use tugas_bd_1;
+Database changed
+MariaDB [tugas_bd_1]> create table Dosen(
+    -> NIP INT NOT NULL UNSIGNED);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'UNSIGNED)' at line 2
+MariaDB [tugas_bd_1]> create table Dosen(
+    -> NIP INT UNSIGNED NOLL NULL
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'NULL
+)' at line 2
+MariaDB [tugas_bd_1]> create table Dosen(
+    -> NIP INT UNSIGNED NOT NULL
+    -> );
+Query OK, 0 rows affected (0.55 sec)
+
+MariaDB [tugas_bd_1]> show tables;
++----------------------+
+| Tables_in_tugas_bd_1 |
++----------------------+
+| dosen                |
+| hobbi                |
+| mahasiswa            |
+| orang_tua            |
++----------------------+
+4 rows in set (0.00 sec)
+
+MariaDB [tugas_bd_1]> drop table dosen;
+Query OK, 0 rows affected (0.40 sec)
+
+MariaDB [tugas_bd_1]> create table Dosen(
+    -> NIP INT UNSIGNED NOT NULL,
+    -> nama VARCHAR(15) NOT NULL,
+    -> jurusan VARCHAR(15) NOT NULL,
+    -> alamat VARCHAR(30) NOT NULL,
+    -> PRIMARY KEY(NIP),
+    -> FOREIGNxax
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')' at line 8
+MariaDB [tugas_bd_1]> create table Kuliah(
+    -> kode_kuliah INT UNSIGNED NOT NULL,
+    -> nama_kuliah VARCHAR(15) NOT NULL,
+    -> sks TINYINT(2) UNSIGNED NOT NULL,
+    -> semester TINYINT(2) UNSIGNED NOT NULL,
+    -> PRIMARY KEY(kode_kuliah)
+    -> )ENGINE=InnoDB;
+Query OK, 0 rows affected (0.21 sec)
+
+MariaDB [tugas_bd_1]> show create table Kuliah;
++--------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Table  | Create Table                                                                                                                                                                                                                                                   |
++--------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Kuliah | CREATE TABLE `kuliah` (
+  `kode_kuliah` int(10) unsigned NOT NULL,
+  `nama_kuliah` varchar(15) NOT NULL,
+  `sks` tinyint(2) unsigned NOT NULL,
+  `semester` tinyint(2) unsigned NOT NULL,
+  PRIMARY KEY (`kode_kuliah`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 |
++--------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+1 row in set (0.00 sec)
+
+MariaDB [tugas_bd_1]> create table Dosen(
+    -> NIP INT UNSIGNED NOT NULL,
+    -> nama VARCHAR(15) NOT NULL,
+    -> jurusan VARCHAR(15) NOT NULL,
+    -> alamat VARCHAR(30) NOT NULL,
+    -> PRIMARY KEY(NIP),
+    -> FOREIGN KEY kode_kuliah
+    -> REFERENCES Kuliah(kode_kuliah)
+    -> ON DELETE RESTRICT
+    -> ON UPDATE RESTRICT
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'REFERENCES Kuliah(kode_kuliah)
+ON DELETE RESTRICT
+ON UPDATE RESTRICT
+)' at line 8
+MariaDB [tugas_bd_1]> create table Dosen(
+    -> NIP INT UNSIGNED NOT NULL,
+    -> nama VARCHAR(15) NOT NULL,
+    -> jurusan VARCHAR(15) NOT NULL,
+    -> alamat VARCHAR(30) NOT NULL,
+    -> PRIMARY KEY(NIP),
+    -> FOREIGN KEY (kode_kuliah)
+    -> REFERENCES Kuliah(kode_kuliah)
+    -> ON DELETE RESTRICT
+    -> ON UPDATE RESTRICT
+    -> );
+ERROR 1072 (42000): Key column 'kode_kuliah' doesn't exist in table
+MariaDB [tugas_bd_1]> desc kuliah;
++-------------+---------------------+------+-----+---------+-------+
+| Field       | Type                | Null | Key | Default | Extra |
++-------------+---------------------+------+-----+---------+-------+
+| kode_kuliah | int(10) unsigned    | NO   | PRI | NULL    |       |
+| nama_kuliah | varchar(15)         | NO   |     | NULL    |       |
+| sks         | tinyint(2) unsigned | NO   |     | NULL    |       |
+| semester    | tinyint(2) unsigned | NO   |     | NULL    |       |
++-------------+---------------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+MariaDB [tugas_bd_1]> create table Dosen(
+    -> NIP INT UNSIGNED NOT NULL,
+    -> nama VARCHAR(15) NOT NULL,
+    -> jurusan VARCHAR(15) NOT NULL,
+    -> alamat VARCHAR(30) NOT NULL,
+    -> kode_kuliah INT NOT NULL,
+    -> PRIMARY KEY(NIP),
+    -> FOREIGN KEY (kode_kuliah)
+    -> REFERENCES Kuliah(kode_kuliah)
+    -> ON DELETE RESTRICT
+    -> ON UPDATE RESTRICT
+    -> );
+ERROR 1005 (HY000): Can't create table `tugas_bd_1`.`dosen` (errno: 150 "Foreign key constraint is incorrectly formed")
+MariaDB [tugas_bd_1]> desc kuliah;
++-------------+---------------------+------+-----+---------+-------+
+| Field       | Type                | Null | Key | Default | Extra |
++-------------+---------------------+------+-----+---------+-------+
+| kode_kuliah | int(10) unsigned    | NO   | PRI | NULL    |       |
+| nama_kuliah | varchar(15)         | NO   |     | NULL    |       |
+| sks         | tinyint(2) unsigned | NO   |     | NULL    |       |
+| semester    | tinyint(2) unsigned | NO   |     | NULL    |       |
++-------------+---------------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+MariaDB [tugas_bd_1]> create table Dosen(
+    -> NIP INT UNSIGNED NOT NULL,
+    -> nama VARCHAR(15) NOT NULL,
+    -> jurusan VARCHAR(15) NOT NULL,
+    -> alamat VARCHAR(30) NOT NULL,
+    -> jurusan VARCHAR(15) NOT NULL,
+    -> kode_kuliah INT UNSIGNED NOT NULL,
+    -> PRIMARY KEY(NIP),
+    -> FOREIGN KEY (kode_kuliah)
+    -> REFERENCES Kuliah(kode_kuliah)
+    -> ON DELETE RESTRICT
+    -> ON UPDATE RESTRICT
+    -> );
+ERROR 1060 (42S21): Duplicate column name 'jurusan'
+MariaDB [tugas_bd_1]> create table Dosen(
+    -> NIP INT UNSIGNED NOT NULL,
+    -> nama VARCHAR(15) NOT NULL,
+    -> jurusan VARCHAR(15) NOT NULL,
+    -> alamat VARCHAR(30) NOT NULL,
+    -> kode_kuliah INT NOT NULL,
+    -> PRIMARY KEY(NIP),
+    -> FOREIGN KEY (kode_kuliah)
+    -> REFERENCES Kuliah(kode_kuliah)
+    -> ON DELETE RESTRICT
+    -> ON UPDATE RESTRICT
+    -> );
+ERROR 1005 (HY000): Can't create table `tugas_bd_1`.`dosen` (errno: 150 "Foreign key constraint is incorrectly formed")
+MariaDB [tugas_bd_1]> create table Dosen(
+    -> NIP INT UNSIGNED NOT NULL,
+    -> nama VARCHAR(15) NOT NULL,
+    -> jurusan VARCHAR(15) NOT NULL,
+    -> alamat VARCHAR(30) NOT NULL,
+    -> kode_kuliah INT UNSIGNED NOT NULL,
+    -> PRIMARY KEY(NIP),
+    -> FOREIGN KEY (kode_kuliah)
+    -> REFERENCES Kuliah(kode_kuliah)
+    -> ON DELETE RESTRICT
+    -> ON UPDATE RESTRICT
+    -> );
+Query OK, 0 rows affected (0.21 sec)
+
+MariaDB [tugas_bd_1]> CREATE table Dosen_Skills(
+    -> id_dosen_skills INT UNSIGNED NOT NULL,
+    -> NIP INT UNSIGNED NOT NULL,
+    -> kode_kuliah INT UNSIGNED NOT NULL,
+    -> PRIMARY KEY (id_dosen_skills),
+    -> FOREIGN KEY (NIP)
+    -> REFERENCES kuliah(kode_kuliah),
+    -> FOREGIN KEY Dosen(;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'KEY Dosen(' at line 8
+MariaDB [tugas_bd_1]> CREATE table Dosen_Skills(
+    -> 
+    -> kode_kuliah INT UNSIGNED NOT NULL,;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 3
+MariaDB [tugas_bd_1]> CREATE table Dosen_Skills(
+    -> kode_kuliah INT UNSIGNED NOT NULL,;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 2
+MariaDB [tugas_bd_1]> CREATE table Dosen_Skills(
+    -> kode_kuliah INT UNSIGNED NOT NULL,
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 2
+MariaDB [tugas_bd_1]> CREATE table Dosen_Skills(
+    -> kode_kuliah INT UNSIGNED NOT NULL,;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 2
+MariaDB [tugas_bd_1]> alamat VARCHAR(30) NOT NULL,
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'alamat VARCHAR(30) NOT NULL,' at line 1
+MariaDB [tugas_bd_1]> MariaDB [(none)]> show tables;
+ERROR 1046 (3D000): No database selected
+MariaDB [(none)]> show create table Dosen;
+ERROR 1046 (3D000): No database selected

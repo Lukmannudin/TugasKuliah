@@ -1,36 +1,35 @@
-
 function metode_bagi2(a,b,kt)
     i=0;g=1;clam=0;
     cb=1;
       
       c=ntengah(a,b);r=renggang(a,b);  
       
-      fa=f(a);
-      fb=f(b);
-      fc=f(c);
+      fa=selang(a);
+      fb=selang(b);
+      fc=selang(c);
       cb=c;
-      mprintf("suku ke\t    a\t\t      b\t\t     c\t\t    f(c)\t  galat\n");
-      mprintf('  %d\t%f\t %f\t %f\t %f\n',i,a,b,cb,fc);
+      disp([fa fc fb ]);
      while (g>kt) 
          
-         if fa*fc<0 then
-            b=cb;
-         else
+         if fc<0 then
             a=cb;
+         else
+            b=cb;
          end,  
         
          c=ntengah(a,b);r=renggang(a,b);  
-         fa=f(a);fb=f(b);fc=f(c);
+         fa=selang(a);fb=selang(b);fc=selang(c);
          g=abs(galat_relatif(c,cb));
          cb=c;
          i=i+1;
-         mprintf('  %d\t%f\t %f\t %f\t %f\t %f\n',i,a,b,c,fc,g);
+         disp([fa fc fb g]);
      end
 endfunction
 
-function nf=f(x)
-        nf= x*cos(x)-0.1;
+function f=selang(x)
+    f=x^3+5*x^2-10*x-5;
 endfunction
+
 function c=ntengah(a,b)
     c=(a+b)/2
 endfunction
