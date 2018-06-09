@@ -10,7 +10,7 @@ function langrange(x,fx,xtaksir,jp);
     
     if m==my then
        if jp~=m-1 then
-           hasil = 'Polinom berderajat '+string(jp)+' tidak sesuai dengan jumlah titik '+string(m);
+           disp ('Polinom berderajat '+string(jp)+' tidak sesuai dengan jumlah titik '+string(m));
        else  
             if (xtaksir>x(1,1)) & (xtaksir<x(1,m)) then
              pi=1;
@@ -26,29 +26,16 @@ function langrange(x,fx,xtaksir,jp);
                     pen=pen+1;
                 end//endfor 
                 hasil=L;
+                disp('Nilai taksiran = '+string(hasil));
             else 
-                hasil='x taksir = '+string(xtaksir)+' diluar dari nilai x yang dihitung';
+                disp('x taksir = '+string(xtaksir)+' diluar dari nilai x yang dihitung');
              end, //end cek xtaksir diluar x masukan    
             end, //end inner if
     else
-        hasil ='Jumlah data antara x dan f(x) tidak sama';          
+        disp('Jumlah data antara x dan f(x) tidak sama');          
     end //endmainif
     
-    disp('Nilai taksiran = '+string(hasil));
+    
     
 endfunction
 
-function hasil=validasi(x,fx,jp)
-   [n,m]=size(x);
-   [ny,my]=size(fx);
-   hasil=%F;
-   if m==my then
-       if jp~=m-1 then
-        printf('Jumlah titik %d tidak sesuai dengan polinom berderajat %d',jp,m);   
-    else
-        hasil=%T;
-       end, 
-   else 
-       disp('Jumlah data antara x dan f(x) tidak sama');    
-   end 
-endfunction
