@@ -16,14 +16,4 @@ function hasil=langrange(x,fx,xtaksir);
     end//endfor 
     hasil=L;
 endfunction
- //L=0;
-   // for i=1:n
-     //   pi=1;
-       //   for j=0:n
-         //     if i<>j then
-           //     pi=pi*( x-x(1,j) )/( x(1,i)-x(1,j) );
-            //  end,               
-          //end,
-        //L=L+y(1,i)*pi;  
-    //end 
-   // hasil=L;
+
